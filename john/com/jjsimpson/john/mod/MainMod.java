@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
-import com.jjsimpson.john.mod.examples.BiggerTntNoFuse;
+import com.jjsimpson.john.mod.examples.BlockBreakMessage;
 
 
 @Mod(modid = MainMod.MODID, version = MainMod.VERSION)
