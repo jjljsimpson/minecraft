@@ -1,4 +1,4 @@
-package com.jjsimpson.john.mod.examples;
+package com.jjsimpson.john.mod.examples.lesson1;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;

@@ -17,7 +17,6 @@ Some nice to haves:
 Below is the info we need to get ourselves up and running.
 
 
-
 ----- Java SDK -----
 This is all written in Java. So we need the software development kit.
 Use a google search for java sdk, or the link below.
@@ -64,6 +63,26 @@ Give it a few minutes to build and you have it basically setup.
 Just for fun you can run the mod right now (it doesn't do much) by pressing the Run button (Green circle with a white play button)
 Quit minecraft
 
+
 ----- GitHub -----
 We use Github so that we can back up our files online. It is a good idea, plus we can share files this way too.
 Every file will be online, and you can point people to them. For example this readme is found at
+https://github.com/jjljsimpson/minecraft/blob/develop/john/com/jjsimpson/john/mod/examples/Readme.txt
+
+You need to create a git account, and fork my repo
+https://github.com/jjljsimpson/minecraft
+and then clone it locally. I cloned mine in the forge folder and called it minecraft.
+There is lots of info on how to use git.
+Finally create a branch (called develop) then pull from the remote and get all the files.
+
+Now that you have all the files, you need to add it to eclipse.
+In eclipse, right click on the project and goto properties.
+Goto Java Build Path.
+Press the Add Folder... button on the source tab.
+Browse to your folder (for me that is John) and select it.
+Now all my code is in the project, and I can upload / download at will.
+
+----- GitX -----
+This makes things easier to work with git. Instead of having to do everything
+through the command line, we can do it through a fancy UI.
+

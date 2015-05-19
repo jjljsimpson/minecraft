@@ -4,8 +4,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import com.jjsimpson.john.mod.examples.BlockBreakMessage;
+import com.jjsimpson.john.mod.idea.ClearTest;
 
 
 @Mod(modid = MainMod.MODID, version = MainMod.VERSION)
@@ -20,6 +22,13 @@ public class MainMod
 	}
 	
 	@EventHandler
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		
+	}
+	
+	
+	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 		//Block Break Example 1
@@ -30,5 +39,15 @@ public class MainMod
 		
 		//Bigger Explosion Example 3
 		//MinecraftForge.EVENT_BUS.register(new BiggerTntNoFuse());
+		
+		//My Test
+		MinecraftForge.EVENT_BUS.register(new ClearTest());
 	}
+	
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		
+	}
+	
 }
