@@ -40,8 +40,14 @@ public class MainMod
 		//Bigger Explosion Example 3
 		//MinecraftForge.EVENT_BUS.register(new BiggerTntNoFuse());
 		
+		//PigDiamond
+		//MinecraftForge.EVENT_BUS.register(new PigDiamond());
+		
+		//ZombieKnight
+		//MinecraftForge.EVENT_BUS.register(new ZombieKnight());
+		
 		//My Test
-		MinecraftForge.EVENT_BUS.register(new ClearTest());
+		//MinecraftForge.EVENT_BUS.register(new ClearTest());
 	}
 	
 	@EventHandler

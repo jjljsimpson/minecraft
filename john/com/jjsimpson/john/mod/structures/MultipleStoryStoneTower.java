@@ -15,9 +15,9 @@ public class MultipleStoryStoneTower extends StoneTower
 	public static final int DOOR_NORTH_EAST = 3;
 	
 	
-	public MultipleStoryStoneTower(World world, BlockPos position, boolean showTorches)
+	public MultipleStoryStoneTower(World world, BlockPos position, BlockPos floorDim, boolean showTorches)
 	{
-		super(world, position, showTorches);		
+		super(world, position, floorDim, showTorches);		
 	}
 	
 		
@@ -30,7 +30,7 @@ public class MultipleStoryStoneTower extends StoneTower
 	
 	public void build(int stories, int doorPosition)
 	{
-		BlockPos dim = new BlockPos(TOWER_WIDTH,TOWER_HEIGHT,TOWER_LENGTH);
+		BlockPos dim = new BlockPos(towerWidth,towerHeight,towerLength);
 		BlockPos pos = position;
 		
 		//Loop through and build with stories
@@ -42,7 +42,7 @@ public class MultipleStoryStoneTower extends StoneTower
 
 			//Move up a floor
 			//-1 because we use the ceiling as a floor
-			position = position.add(0, TOWER_HEIGHT-1, 0);
+			position = position.add(0, towerHeight-1, 0);
 		}
 		
 		//reset position and add stairs
@@ -53,7 +53,7 @@ public class MultipleStoryStoneTower extends StoneTower
 			
 			//Move up a floor
 			//-1 because we use the ceiling as a floor
-			position = position.add(0, TOWER_HEIGHT-1, 0);			
+			position = position.add(0, towerHeight-1, 0);			
 		}
 		
 		//Reset position
@@ -66,18 +66,18 @@ public class MultipleStoryStoneTower extends StoneTower
 		{
 			case DOOR_NORTH_WEST:
 				xpos = 1;
-				zpos = TOWER_LENGTH - 1;
+				zpos = towerLength - 1;
 				break;
 			case DOOR_NORTH_EAST:
-				xpos = TOWER_WIDTH-2;
-				zpos = TOWER_LENGTH-1;
+				xpos = towerWidth-2;
+				zpos = towerLength-1;
 				break;
 			case DOOR_SOUTH_WEST:
 				xpos = 1;	//TODO
 				break;
 			case DOOR_SOUTH_EAST:				
 			default:
-				xpos = TOWER_WIDTH-2;
+				xpos = towerWidth-2;
 				zpos = 0;
 		}
 		BlockHelper.drawOneDimensional(null, world, null, position.add(xpos,1,zpos), new BlockPos(0,1,0), 2);				

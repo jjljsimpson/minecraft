@@ -31,6 +31,8 @@ public class StoneFort
 	protected List<IBlockState>	blockMaterial;
 	protected boolean			showTorches;
 	
+	protected BlockPos			towerFloorDim;
+	
 	public StoneFort(World world, BlockPos position, boolean showTorches)
 	{
 		random = new Random();
@@ -38,6 +40,9 @@ public class StoneFort
 		this.position = position;
 		blockMaterial = new ArrayList<IBlockState>();
 		this.showTorches = showTorches;
+		
+		//Tower is 7x5x7
+		towerFloorDim = new BlockPos(7, 5, 7);
 		
 		createBlockMaterial();
 	}
@@ -104,19 +109,19 @@ public class StoneFort
 	protected void buildTowers(BlockPos southWest)
 	{
 		//Build south west tower (2 for stone wall)
-		MultipleStoryStoneTower swTower = new MultipleStoryStoneTower(world, southWest.add(WALL_WIDTH, -1, WALL_WIDTH), showTorches);
+		MultipleStoryStoneTower swTower = new MultipleStoryStoneTower(world, southWest.add(WALL_WIDTH, -1, WALL_WIDTH), towerFloorDim, showTorches);
 		swTower.build(2, MultipleStoryStoneTower.DOOR_NORTH_EAST);
 		
 		//Build south east tower (4 for two walls)
-		MultipleStoryStoneTower seTower = new MultipleStoryStoneTower(world, southWest.add(FORT_WIDTH - (StoneTower.TOWER_WIDTH+WALL_WIDTH), -1, WALL_WIDTH), showTorches);
+		MultipleStoryStoneTower seTower = new MultipleStoryStoneTower(world, southWest.add(FORT_WIDTH - (towerFloorDim.getX()+WALL_WIDTH), -1, WALL_WIDTH), towerFloorDim, showTorches);
 		seTower.build(2, MultipleStoryStoneTower.DOOR_NORTH_WEST);
 		
 		//Build north west tower
-		MultipleStoryStoneTower nwTower = new MultipleStoryStoneTower(world, southWest.add(WALL_WIDTH, -1, FORT_LENGTH - (StoneTower.TOWER_LENGTH+WALL_WIDTH)), showTorches);
+		MultipleStoryStoneTower nwTower = new MultipleStoryStoneTower(world, southWest.add(WALL_WIDTH, -1, FORT_LENGTH - (towerFloorDim.getZ()+WALL_WIDTH)), towerFloorDim, showTorches);
 		nwTower.build(2, MultipleStoryStoneTower.DOOR_SOUTH_EAST);
 		
 		//Build north east tower
-		MultipleStoryStoneTower neTower = new MultipleStoryStoneTower(world, southWest.add(FORT_WIDTH - (StoneTower.TOWER_WIDTH+WALL_WIDTH), -1, FORT_LENGTH - (StoneTower.TOWER_LENGTH+WALL_WIDTH)), showTorches);
+		MultipleStoryStoneTower neTower = new MultipleStoryStoneTower(world, southWest.add(FORT_WIDTH - (towerFloorDim.getX()+WALL_WIDTH), -1, FORT_LENGTH - (towerFloorDim.getZ()+WALL_WIDTH)), towerFloorDim, showTorches);
 		neTower.build(2, MultipleStoryStoneTower.DOOR_SOUTH_WEST);				
 	}
 	

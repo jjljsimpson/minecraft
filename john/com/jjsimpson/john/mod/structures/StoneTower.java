@@ -11,12 +11,12 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 public class StoneTower
-{
-	public static final int		TOWER_WIDTH = 7;	//x
-	public static final int		TOWER_LENGTH = 7;	//z
-	public static final int		TOWER_HEIGHT = 5;	//y
-	protected static final int	NEAR_WALL = 1;
-	protected static final int 	FAR_WALL = TOWER_LENGTH - 2;
+{	
+	protected int				towerWidth;		//x
+	protected int				towerHeight;	//y
+	protected int				towerLength;	//7
+	protected int 				nearWall;
+	protected int				farWall;
 	
 	protected World				world;
 	protected BlockPos			position;
@@ -25,7 +25,7 @@ public class StoneTower
 	protected boolean			showTorches;
 
 	
-	public StoneTower(World world, BlockPos position, boolean showTorches)
+	public StoneTower(World world, BlockPos position, BlockPos dim, boolean showTorches)
 	{
 		this.world = world;
 		this.position = position;
@@ -34,18 +34,31 @@ public class StoneTower
 		
 		blockMaterial = new ArrayList<IBlockState>();
 		createBlockMaterial();
+		
+		//Default values
+		setDimensions(dim.getX(), dim.getY(), dim.getZ());
 	}
 	
 	
 	public void build()
 	{
-		BlockPos dim = new BlockPos(TOWER_WIDTH,TOWER_HEIGHT,TOWER_LENGTH);
+		BlockPos dim = new BlockPos(towerWidth,towerHeight,towerLength);
 		
 		//Build the room with stairs
 		buildRoomWithStairs(dim);
 		
 		//Add Door
 		BlockHelper.drawOneDimensional(null, world, null, position.add(1,1,0), new BlockPos(0,1,0), 2);		
+	}
+	
+	
+	protected void setDimensions(int xdim, int ydim, int zdim)
+	{
+		towerWidth = xdim;
+		towerHeight = ydim;
+		towerLength = zdim;
+		nearWall = 1;
+		farWall = towerLength - 2;
 	}
 	
 	
@@ -70,9 +83,9 @@ public class StoneTower
 		}
 	}
 	
-	protected void buildStairs(BlockPos dim, boolean nearWall)
+	protected void buildStairs(BlockPos dim, boolean doNearWall)
 	{
-		int zoffset = nearWall ? NEAR_WALL : FAR_WALL;
+		int zoffset = doNearWall ? nearWall : farWall;
 		
 		//Create the Stairs
 		GeneralStructures.addStairsToBox(world, position, dim, zoffset);
@@ -97,4 +110,6 @@ public class StoneTower
 		blockMaterial.add(Blocks.stonebrick.getStateFromMeta(BlockStoneBrick.MOSSY_META));
 		blockMaterial.add(Blocks.stonebrick.getStateFromMeta(BlockStoneBrick.CRACKED_META));		
 	}
+	
+	
 }
