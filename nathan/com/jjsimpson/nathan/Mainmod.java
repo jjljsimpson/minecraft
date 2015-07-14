@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
-import com.jjsimpson.nathan.example3.BiggerTnT;
+import com.jjsimpson.nathan.example5.Sleepify;
 
 
 @Mod(modid=Mainmod.MODID, version=Mainmod.VERSION)
@@ -18,7 +18,9 @@ public class Mainmod {
 	{
 		//MinecraftForge.EVENT_BUS.register(new BlockBreakMessage());
 		//MinecraftForge.EVENT_BUS.register(new MinecartExplosion());
-		MinecraftForge.EVENT_BUS.register(new BiggerTnT());
+		//MinecraftForge.EVENT_BUS.register(new BiggerTnT());
+		MinecraftForge.EVENT_BUS.register(new Sleepify());
+	
 	}	
 	
 	
